@@ -1,32 +1,32 @@
-// Import Bootstrap functions, variables, and mixins
-@import "bootstrap/scss/functions";
-@import "bootstrap/scss/variables";
-@import "bootstrap/scss/mixins";
+// Import Bootstrap
+@import "bootstrap/scss/bootstrap";
 
 // Custom variables
-$font-family-base: 'Inter', sans-serif;
-$primary: #007bff;
-$secondary: #6c757d;
-$success: #28a745;
-$info: #17a2b8;
-$warning: #ffc107;
-$danger: #dc3545;
-$light: #f8f9fa;
-$dark: #343a40;
-
-// Custom styles
-body {
-    font-family: $font-family-base;
-    line-height: 1.6;
-    color: $dark;
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --info-color: #17a2b8;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
 }
 
-// Navigation
+// Global styles
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--dark-color);
+}
+
+// Header styles
 .navbar {
-    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
     
     .navbar-brand {
-        font-weight: 600;
+        font-weight: 700;
+        color: var(--primary-color);
     }
     
     .nav-link {
@@ -34,7 +34,7 @@ body {
         padding: 0.5rem 1rem;
         
         &:hover {
-            color: $primary;
+            color: var(--primary-color);
         }
     }
 }
@@ -42,7 +42,8 @@ body {
 // Hero section
 .hero {
     padding: 4rem 0;
-    background-color: $light;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--info-color) 100%);
+    color: white;
     
     h1 {
         font-weight: 700;
@@ -51,87 +52,94 @@ body {
     
     .lead {
         font-size: 1.25rem;
-        font-weight: 400;
+        margin-bottom: 2rem;
     }
 }
 
-// Cards
+// Card styles
 .card {
     border: none;
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
     transition: transform 0.2s ease-in-out;
     
     &:hover {
         transform: translateY(-5px);
     }
+    
+    .card-title {
+        font-weight: 600;
+    }
 }
 
-// Blog posts
+// Blog post styles
 .post-meta {
-    font-size: 0.875rem;
-    color: $secondary;
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+    
+    i {
+        margin-right: 0.5rem;
+    }
 }
 
 // Travel gallery
-.travel-gallery {
+.gallery {
     .gallery-item {
         margin-bottom: 1.5rem;
         
         img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 0.25rem;
+            border-radius: 0.5rem;
+            transition: transform 0.2s ease-in-out;
+            
+            &:hover {
+                transform: scale(1.05);
+            }
         }
-    }
-}
-
-// Links section
-.link-card {
-    .link-title {
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-    }
-    
-    .link-description {
-        font-size: 0.875rem;
-        color: $secondary;
     }
 }
 
 // Contact form
 .contact-form {
     .form-control {
-        border-radius: 0.25rem;
-        border: 1px solid #ced4da;
+        border-radius: 0.5rem;
+        padding: 0.75rem 1rem;
         
         &:focus {
-            border-color: $primary;
-            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+            box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
         }
     }
 }
 
 // Footer
-footer {
+.footer {
+    background-color: var(--dark-color);
+    color: white;
+    padding: 3rem 0;
+    margin-top: 4rem;
+    
     .social-links {
         a {
-            transition: color 0.2s ease-in-out;
+            color: white;
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
             
             &:hover {
-                color: $primary !important;
+                color: var(--primary-color);
             }
         }
     }
 }
 
 // Responsive adjustments
-@include media-breakpoint-down(md) {
+@media (max-width: 768px) {
     .hero {
         padding: 2rem 0;
+        
+        h1 {
+            font-size: 2rem;
+        }
     }
     
-    .travel-gallery .gallery-item img {
-        height: 200px;
+    .card {
+        margin-bottom: 1.5rem;
     }
 } 

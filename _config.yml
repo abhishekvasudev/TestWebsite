@@ -1,8 +1,8 @@
 # Site settings
 title: Abhishek Vasudev
 description: Personal portfolio and blog
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://www.abhishekvasu.dev" # the base hostname & protocol for your site
+baseurl: "/Portfolio" # the subpath of your site, e.g. /blog
+url: "https://abhishekvasudev.github.io" # the base hostname & protocol for your site
 
 # Build settings
 markdown: kramdown
@@ -19,6 +19,9 @@ collections:
   travel:
     output: true
     permalink: /travel/:title/
+  links:
+    output: true
+    permalink: /links/:title/
 
 # Defaults
 defaults:
@@ -37,6 +40,11 @@ defaults:
       type: "travel"
     values:
       layout: "travel"
+  - scope:
+      path: ""
+      type: "links"
+    values:
+      layout: "link"
 
 # Pagination
 paginate: 5
