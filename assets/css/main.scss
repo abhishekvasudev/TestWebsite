@@ -1,0 +1,137 @@
+// Import Bootstrap functions, variables, and mixins
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+
+// Custom variables
+$font-family-base: 'Inter', sans-serif;
+$primary: #007bff;
+$secondary: #6c757d;
+$success: #28a745;
+$info: #17a2b8;
+$warning: #ffc107;
+$danger: #dc3545;
+$light: #f8f9fa;
+$dark: #343a40;
+
+// Custom styles
+body {
+    font-family: $font-family-base;
+    line-height: 1.6;
+    color: $dark;
+}
+
+// Navigation
+.navbar {
+    padding: 1rem 0;
+    
+    .navbar-brand {
+        font-weight: 600;
+    }
+    
+    .nav-link {
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        
+        &:hover {
+            color: $primary;
+        }
+    }
+}
+
+// Hero section
+.hero {
+    padding: 4rem 0;
+    background-color: $light;
+    
+    h1 {
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
+    
+    .lead {
+        font-size: 1.25rem;
+        font-weight: 400;
+    }
+}
+
+// Cards
+.card {
+    border: none;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    transition: transform 0.2s ease-in-out;
+    
+    &:hover {
+        transform: translateY(-5px);
+    }
+}
+
+// Blog posts
+.post-meta {
+    font-size: 0.875rem;
+    color: $secondary;
+}
+
+// Travel gallery
+.travel-gallery {
+    .gallery-item {
+        margin-bottom: 1.5rem;
+        
+        img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 0.25rem;
+        }
+    }
+}
+
+// Links section
+.link-card {
+    .link-title {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+    
+    .link-description {
+        font-size: 0.875rem;
+        color: $secondary;
+    }
+}
+
+// Contact form
+.contact-form {
+    .form-control {
+        border-radius: 0.25rem;
+        border: 1px solid #ced4da;
+        
+        &:focus {
+            border-color: $primary;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+    }
+}
+
+// Footer
+footer {
+    .social-links {
+        a {
+            transition: color 0.2s ease-in-out;
+            
+            &:hover {
+                color: $primary !important;
+            }
+        }
+    }
+}
+
+// Responsive adjustments
+@include media-breakpoint-down(md) {
+    .hero {
+        padding: 2rem 0;
+    }
+    
+    .travel-gallery .gallery-item img {
+        height: 200px;
+    }
+} 
