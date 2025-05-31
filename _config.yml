@@ -9,7 +9,7 @@ default_lang: "en"  # Default language
 
 # Base URL settings
 url: "https://www.abhishekvasu.dev"
-baseurl: ""
+baseurl: https://www.abhishekvasu.dev/TestWebsite/"
 
 # Permalinks - Clean and SEO-friendly URLs
 permalink: "pretty"
