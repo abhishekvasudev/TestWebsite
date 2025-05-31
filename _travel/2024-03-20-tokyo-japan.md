@@ -1,8 +1,12 @@
 ---
 layout: travel
 title: "Tokyo, Japan"
-date: 2024-03-20
+ref: "tokyo"
+permalink: "/travel/2025/03/16/tokyo/"
+date: 2025-03-20
+categories: ["General"]
 location: "Tokyo, Japan"
+tags: ["Career", "iOS", "Jekyll", "Launch", "Blog", "Developer", "Projects"]
 images:
   - path: /assets/images/travel/tokyo/shibuya.jpg
     caption: "Shibuya Crossing - The world's busiest pedestrian crossing"
@@ -10,6 +14,7 @@ images:
     caption: "Senso-ji Temple in Asakusa"
   - path: /assets/images/travel/tokyo/shinjuku.jpg
     caption: "Shinjuku at night"
+published: true
 ---
 
 # Exploring Tokyo: A Modern Metropolis with Ancient Traditions

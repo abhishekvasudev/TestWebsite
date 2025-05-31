@@ -1,0 +1,11 @@
+# This file contains localization strings for the website in English (en) and Italian (it).
+# It includes translations for navigation menu items and post metadata.
+en:
+  navigation:
+    home: "Home"
+    about: "About me"
+    portfolio: "Portfolio"
+    blog: "Blog"
+    contacts: "Contact"
+  post:
+    published_on: "Published on"

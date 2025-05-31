@@ -1,38 +1,135 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ page.lang | default: site.default_lang }}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
-    
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    {% seo %}
-    {% feed_meta %}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ page.title }} - {{ site.title }}</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/assets/images/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+  <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="acasto" />
+  <link rel="manifest" href="/assets/images/site.webmanifest" />
+  
+  <!-- Link to the main CSS file -->
+  <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
 </head>
 <body>
-    {% include header.html %}
-    
-    <main class="container py-4">
-        {{ content }}
-    </main>
-    
-    {% include footer.html %}
-    
-    <!-- Bootstrap 5 JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Custom JS -->
-    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+  <!-- Header with navigation bar -->
+  <header class="site-header glass-panel">
+    <nav class="nav-bar container">
+      <!-- Nav Left: Desktop logo and burger button -->
+      <div class="nav-left">
+        <!-- Desktop Logo (visible on desktop only) -->
+        <a href="{{ site.baseurl }}/" class="brand-logo desktop-logo">
+          <img src="{{ '/assets/images/av-logo.png' | relative_url }}" alt="AV Logo" class="logo-img">
+          Abhishek Vasudev
+        </a>
+      </div>
+      <!-- Nav Center: Mobile logo (visible on mobile only) -->
+      <div class="nav-center">
+        <a href="{{ site.baseurl }}/" class="brand-logo mobile-logo">
+          <img src="{{ '/assets/images/acasto-logo.png' | relative_url }}" alt="ACasto Logo" class="logo-img">
+        </a>
+      </div>
+
+      <!-- Nav Right: Language selector (always visible) -->
+      <div class="nav-right">
+        <!-- Burger button (always visible on mobile) -->
+        <button class="menu-toggle" aria-label="Open menu">
+          <span class="burger-icon"></span>
+        </button>
+        <!-- Desktop menu (visible on wide screens) -->
+        <ul class="menu desktop-menu">
+          <li {% if page.ref == "portfolio" or page.layout == "portfolio" %}class="active"{% endif %}>
+            <a href="{{ site.baseurl }}/portfolio/">
+              Portfolio
+            </a>
+          </li>
+          <li {% if page.ref == "blog" or page.layout == "post" %}class="active"{% endif %}>
+            <a href="{{ site.baseurl }}/blog/">
+              Blog
+            </a>
+          </li>
+          <li {% if page.ref == "home" %}class="active"{% endif %}>
+            <a href="{{ site.baseurl }}/">
+              Travel
+            </a>
+          </li>
+          <li {% if page.ref == "about" %}class="active"{% endif %}>
+            <a href="{{ site.baseurl }}/about/">
+              Links
+            </a>
+          </li>
+          <li {% if page.ref == "contacts" %}class="active"{% endif %}>
+            <a href="{{ site.baseurl }}/contacts/">
+              Contact
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Side menu for mobile devices -->
+  <div class="side-menu">
+    <!-- Side menu header with close button -->
+    <div class="side-menu-header">
+      <button class="close-menu" aria-label="Close menu">&times;</button>
+    </div>
+    <!-- Mobile menu items -->
+    <ul class="menu">
+      <li {% if page.ref == "portfolio" or page.layout == "portfolio" %}class="active"{% endif %}>
+        <a href="{{ site.baseurl }}/portfolio/">
+          Portfolio
+        </a>
+      </li>
+      <li {% if page.ref == "blog" or page.layout == "post" %}class="active"{% endif %}>
+        <a href="{{ site.baseurl }}/blog/">
+          Blog
+        </a>
+      </li>
+      <li {% if page.ref == "home" %}class="active"{% endif %}>
+        <a href="{{ site.baseurl }}/">
+          Travel
+        </a>
+      </li>
+      <li {% if page.ref == "about" %}class="active"{% endif %}>
+        <a href="{{ site.baseurl }}/about/">
+          Links
+        </a>
+      </li>
+      <li {% if page.ref == "contacts" %}class="active"{% endif %}>
+        <a href="{{ site.baseurl }}/contacts/">
+          Contact
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Main content area -->
+  <main class="container">
+    {{ content }}
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer container">
+    <p>{{ site.time | date: "%Y" }} {{ site.title }}. Made with ♥️.</p>
+  </footer>
+
+  <!-- Floating theme switch button -->
+  <!-- <div class="theme-switch">
+    <input type="checkbox" id="theme-toggle">
+    <label for="theme-toggle" class="theme-toggle-label">
+      <span class="theme-icon">🌙</span>
+    </label>
+  </div> -->
+  <!-- Theme overlay for expansion animation on theme change -->
+  <div class="theme-overlay"></div>
+
+  <!-- Include main JavaScript file -->
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 </body>
-</html> 
+</html>

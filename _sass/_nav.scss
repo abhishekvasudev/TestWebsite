@@ -1,0 +1,373 @@
+// Desktop Logo dimensions (visible on desktop)
+.desktop-logo .logo-img {
+  height: 40px;  // Adjust height as desired
+  width: auto;
+}
+
+// Mobile Logo dimensions (visible on mobile, centered in nav-center)
+.mobile-logo .logo-img {
+  height: 40px;  // Adjust height for mobile if needed
+  width: auto;
+}
+
+// Apply filter to logo images
+.desktop-logo .logo-img,
+.mobile-logo .logo-img {
+  filter: brightness(0) saturate(100%) var(--logo-filter-light);
+}
+
+// In dark mode, use the specific filter
+.dark-theme .desktop-logo .logo-img,
+.dark-theme .mobile-logo .logo-img {
+  filter: brightness(0) saturate(100%) var(--logo-filter-dark);
+}
+
+// ------------------------------
+// NAV BAR BASE STYLES
+// ------------------------------
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+// ------------------------------
+// Desktop Horizontal Menu
+// ------------------------------
+.desktop-menu {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.desktop-menu li {
+  position: relative;
+}
+
+.desktop-menu li a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.desktop-menu li.active a {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+// ------------------------------
+// Language Dropdown (common for desktop & mobile)
+// ------------------------------
+// Set a fixed width for the dropdown
+.language-dropdown {
+  position: relative;
+  display: inline-block;
+  width: 50px; // reduced width for compactness
+  cursor: pointer;
+}
+
+/* Closed button (summary) */
+.language-dropdown summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--dropdown-border);
+  background-color: var(--dropdown-bg);
+  color: var(--dropdown-text);
+  font-size: 0.9rem;
+  font-weight: bold;
+  /* Only round the top corners for continuity with the menu */
+  border-radius: 4px 4px 4px 4px;
+  transition: background-color 0.3s, border-color 0.3s;
+  /* Space on the left for the icon */
+  padding-left: 2rem;
+  position: relative;
+}
+
+/* Icon positioned on the left */
+.language-dropdown summary::before {
+  content: "▶";
+  position: absolute;
+  left: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  color: var(--dropdown-text);
+  transition: transform 0.3s ease;
+}
+
+/* When the dropdown is open, rotate the arrow to point down */
+.language-dropdown[open] summary::before {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+.language-dropdown[open] summary {
+  border-radius: 4px 4px 0px 0;
+}
+
+/* Remove the default marker */
+.language-dropdown summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Container for the options (dropdown) */
+.language-options {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: calc(100% - 1px);  // Attach to the summary
+  left: 0;
+  width: 96%;
+  background: var(--dropdown-option-bg);  // Slightly different color from selected options
+  border: 1px solid var(--dropdown-border);
+  border-top: none;  // Visually connect to the summary
+  /* Only round the bottom corners */
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  /* Initially hidden, with a sliding effect */
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* When the dropdown is open, show the options */
+.language-dropdown[open] .language-options {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Style for each option */
+.language-options li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: var(--dropdown-text);
+  transition: background-color 0.3s ease;
+}
+
+/* Hover for each option */
+.language-options li a:hover {
+  background-color: var(--dropdown-hover-bg);
+}
+
+/* Selected state (current language) */
+.language-options li a.selected {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+// ------------------------------
+// Nav Left: Contains burger button & (desktop) logo & desktop menu
+// ------------------------------
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+// Desktop Logo (visible on desktop)
+.desktop-logo {
+  display: inline-block;
+}
+
+// Burger button styling (visible on mobile)
+.menu-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 50px;  // same width as the language dropdown
+  height: 50px;
+  display: none; // will be shown on mobile via media query
+  color: var(--text-color); // normal state: use the text color defined in the theme
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.menu-toggle:hover {
+  color: var(--primary-color); // change color to var(--primary-color) on hover
+  transform: scale(1.1);       // slight scale for hover
+}
+
+.burger-icon {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background-color: currentColor; // inherit color from normal or hover state
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.burger-icon::before,
+.burger-icon::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 2px;
+  background-color: currentColor;
+  left: 0;
+  transition: background-color 0.3s ease;
+}
+
+.burger-icon::before {
+  top: -8px;
+}
+
+.burger-icon::after {
+  top: 8px;
+}
+
+// ------------------------------
+// Nav Center: Mobile Logo (visible on mobile only)
+// ------------------------------
+.nav-center {
+  display: none; // Hidden on desktop; shown via media query
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.mobile-logo {
+  display: none; // Hidden on desktop; visible on mobile
+}
+
+// ------------------------------
+// Nav Right: Language Dropdown (always visible)
+// ------------------------------
+.nav-right {
+  /* Always visible on all screen sizes */
+  margin: 0;
+}
+
+// ------------------------------
+// SIDE MENU STYLES (Mobile)
+// ------------------------------
+// Sidebar (Side Menu)
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translateX(-100%); // Hide the sidebar by default
+  width: 80%;
+  max-width: 300px;
+  height: 100%;
+  background: var(--side-menu-bg);  // Use the variable for the background
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+// Rule to show the sidebar
+.side-menu.open {
+  transform: translateX(0);
+}
+
+// Sidebar header (with close button)
+.side-menu .side-menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+// Sidebar close button
+.close-menu {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--text-color);
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.close-menu:hover {
+  color: var(--primary-color);
+  transform: rotate(90deg);
+}
+
+// Sidebar menu list
+.side-menu .menu {
+  flex-direction: column;
+  gap: 0;
+  list-style: none;
+  padding: 0;
+}
+
+// Style for each list item
+.side-menu .menu li {
+  border-bottom: 1px solid var(--side-menu-border); // Use the variable for the border
+  padding: 0.5rem 0;
+}
+
+// Remove the border from the last item
+.side-menu .menu li:last-child {
+  border-bottom: none;
+}
+
+// Style for sidebar links
+.side-menu .menu li a {
+  display: block;
+  padding: 1rem 0;
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+// Highlight the active menu
+.side-menu .menu li.active a {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+// ------------------------------
+// MEDIA QUERIES
+// ------------------------------
+@media (max-width: 768px) {
+  // Hide desktop menu on mobile
+  .desktop-menu {
+    display: none !important;
+  }
+  // Show burger button on mobile
+  .menu-toggle {
+    display: block !important;
+  }
+  // Hide desktop logo and show mobile logo in nav-center
+  .desktop-logo {
+    display: none;
+  }
+  .nav-center {
+    display: flex;
+    position: relative;
+  }
+  .mobile-logo {
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (min-width: 769px) {
+  // On desktop: hide mobile-specific elements
+  .nav-center {
+    display: none;
+  }
+  .desktop-logo {
+    display: inline-block;
+  }
+  .menu-toggle {
+    display: none;
+  }
+}

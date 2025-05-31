@@ -1,73 +1,60 @@
 # Site settings
-title: Abhishek Vasudev
-description: Personal portfolio and blog
-baseurl: "/Portfolio" # the subpath of your site, e.g. /blog
-url: "https://abhishekvasudev.github.io" # the base hostname & protocol for your site
+title: "Abhishek Vasudev - iOS Developer"
+description: >-
+  "This is the personal website and blog of Abhishek Vasudev"
+
+# Multilingual settings
+languages: ["en"]  # Add new languages here (e.g., "fr", "de")
+default_lang: "en"  # Default language
+
+# Base URL settings
+url: "https://www.abhishekvasu.dev"
+baseurl: ""
+
+# Permalinks - Clean and SEO-friendly URLs
+permalink: "pretty"
+
+# Social links
+email: abhishekvasudev7@gmail.com
+linkedin_link: 
+github_username: 
+github_link: 
 
 # Build settings
 markdown: kramdown
-permalink: /:year/:month/:day/:title/
+theme: null 
 plugins:
-  - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-seo-tag
-  - jekyll-paginate
-  - jekyll-archives
-
-# Collections
-collections:
-  travel:
-    output: true
-    permalink: /travel/:title/
-  links:
-    output: true
-    permalink: /links/:title/
+  - jekyll-seo-tag  # Generates SEO meta tags
+  - jekyll-sitemap  # Automatically generates sitemap.xml
 
 # Defaults
 defaults:
   - scope:
-      path: ""
-      type: "posts"
+    path: ""
+    type: "posts"
     values:
-      layout: "post"
+    layout: "post"
   - scope:
-      path: ""
-      type: "pages"
+    path: ""
+    type: "pages"
     values:
-      layout: "page"
+    layout: "page"
   - scope:
-      path: ""
-      type: "travel"
+    path: ""
+    type: "travel"
     values:
-      layout: "travel"
+    layout: "travel"
   - scope:
-      path: ""
-      type: "links"
+    path: ""
+    type: "links"
     values:
-      layout: "link"
+    layout: "link"
 
-# Pagination
-paginate: 5
-paginate_path: "/blog/page:num/"
-
-# Archives
-jekyll-archives:
-  enabled:
-    - categories
-    - tags
-  layouts:
-    category: archive-category
-    tag: archive-tag
-  permalinks:
-    category: '/category/:name/'
-    tag: '/tag/:name/'
-
-# Exclude from processing
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - node_modules
-  - vendor
-  - .gitignore
-  - .github
-  - README.md 
+# Collections - Portfolio and Blog
+collections:
+  portfolio:
+    output: true
+    permalink: "/:collection/:path/"
+  posts:
+    output: true
+    permalink: "/:collection/:year/:month/:day/:title/"
