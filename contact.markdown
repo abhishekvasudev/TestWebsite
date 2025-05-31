@@ -2,7 +2,7 @@
 layout: default
 title: "Contact"
 ref: "contact"
-permalink: "/contact/"
+permalink: "contact/"
 ---
 # Contact  
 

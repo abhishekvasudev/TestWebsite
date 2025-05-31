@@ -2,7 +2,7 @@
 layout: default
 title: "Portfolio"
 ref: "portfolio"
-permalink: "/portfolio/"
+permalink: "portfolio/"
 ---
 # Portfolio  
 

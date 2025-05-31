@@ -2,7 +2,7 @@
 layout: default
 title: "Blog"
 ref: "blog"
-permalink: "/blog/"
+permalink: "blog/"
 ---
 # Blog  
 

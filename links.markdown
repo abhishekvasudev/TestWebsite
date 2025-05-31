@@ -2,7 +2,7 @@
 layout: links
 title: "Links"
 ref: "links"
-permalink: "/links/"
+permalink: "links/"
 ---
 # Links
 

@@ -2,7 +2,7 @@
 layout: travel
 title: "Travel"
 ref: "travel"
-permalink: "/travel/"
+permalink: "travel/"
 ---
 # Travel
 

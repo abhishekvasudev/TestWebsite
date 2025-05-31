@@ -2,7 +2,7 @@
 layout: index
 title: "Home"
 ref: "home"
-permalink: "/"
+permalink: ""
 ---
 Hello,  
 
